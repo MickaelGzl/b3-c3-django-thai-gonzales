@@ -3,10 +3,12 @@
 {% if sites %}
 <ul>
   {% for site in sites %}
-  <h2>{{site.name}}</h2>
-  <small>{{site.url}}</small>
-  <p>{{site.identifier}}</p>
-  <p>{{site.password}}</p>
+  <li>
+    <a href="{% url 'details' site.id%}">
+      <span>{{site.name}}</span>
+      <small>{{site.url}}</small>
+    </a>
+  </li>
   {% endfor %}
 </ul>
 {% else %}
