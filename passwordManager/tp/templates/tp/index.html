@@ -1,0 +1,15 @@
+<h1>Bienvenue sur votre gestionnaire de mot de passe</h1>
+
+{% if sites %}
+<ul>
+  {% for site in sites %}
+  <h2>{{site.name}}</h2>
+  <small>{{site.url}}</small>
+  <p>{{site.identifier}}</p>
+  <p>{{site.password}}</p>
+  {% endfor %}
+</ul>
+{% else %}
+<span>Aucun sites enregistré sur votre gestionnaire de mot de passe</span>
+{% endif %}
+<button><a href="#">Créer un nouveau site</a></button>
