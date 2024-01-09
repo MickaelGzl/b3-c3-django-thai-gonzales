@@ -1,0 +1,20 @@
+{% if site %}
+<h2>{{site.name}}</h2>
+<small>{{site.url}}</small>
+<table border="1">
+  <tr>
+    <th>identifiant</th>
+    <th>mot de passe</th>
+  </tr>
+
+  <tr>
+    <td>{{site.identifier}}</td>
+    <td>{{site.password}}</td>
+  </tr>
+</table>
+
+<button><a href="/">retour</a></button>
+
+{% else %}
+<span> aucun site trouvé pour l'identifiant fournis.</span>
+{% endif %}

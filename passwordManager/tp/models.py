@@ -5,5 +5,5 @@ from django.core.validators import MinLengthValidator
 class Site(models.Model):
     name = models.CharField(max_length=24)
     identifier = models.CharField(max_length=80)
-    password = models.CharField(max_length=80, validators=[MinLengthValidator(11)])
-    url = models.IntegerField()
+    password = models.CharField(max_length=80, validators=[MinLengthValidator(8)])
+    url = models.CharField(max_length=120)
