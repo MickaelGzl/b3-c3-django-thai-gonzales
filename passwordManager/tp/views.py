@@ -13,6 +13,7 @@ def siteView(req, site_id):
     site = get_object_or_404(Site, pk=site_id)
     return render(req, 'tp/details.html', {'site': site})
 
+
 def siteCreate(req):
     if req.method == 'POST':
         form = SiteForm(req.POST)
@@ -23,3 +24,12 @@ def siteCreate(req):
         form = SiteForm()
     
     return render(req, 'tp/form.html', {'form': form})
+
+
+def siteDelete(req, site_id):
+    # Récupérer l'objet à supprimer
+    site = get_object_or_404(site, pk=site_id)
+    site.delete()
+    return HttpResponseRedirect('/')
+    
+ 
