@@ -1,4 +1,4 @@
-{% if site %}
+{% extends "./base.html" %} {% block content %} {% if site %}
 <h2>{{site.name}}</h2>
 <small>{{site.url}}</small>
 <table border="1">
@@ -13,10 +13,12 @@
   </tr>
 </table>
 
-<button><a href="{% url 'formEdit' site.id %}">Modifier</a></button>
+<div class="detailsBtns">
+  <button><a href="{% url 'formEdit' site.id %}">Modifier</a></button>
 
-<button><a href="/">retour</a></button>
+  <button class="leave"><a href="/">retour</a></button>
+</div>
 
 {% else %}
 <span> aucun site trouvé pour l'identifiant fournis.</span>
-{% endif %}
+{% endif %} {% endblock %}

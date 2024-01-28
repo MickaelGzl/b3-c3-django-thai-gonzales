@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'tp/style.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label class="switch">
+      <input type="checkbox" id="checkbox" />
+      <span class="slider"></span>
+    </label>
+
+    <h1>Bienvenue sur votre gestionnaire de mot de passe</h1>
+    {% block content %}{% endblock %}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const body = document.getElementsByTagName("body")[0];
+        const check = document.getElementById("checkbox");
+
+        let mode = localStorage.getItem("mode");
+
+        if (mode === "dark") {
+          const body = document.getElementsByTagName("body")[0];
+          body.style.backgroundColor = "#212121";
+          check.checked = true;
+        }
+
+        check.addEventListener("click", (e) => {
+          if (e.target.checked) {
+            mode = "dark";
+            body.style.backgroundColor = "#212121";
+          } else {
+            mode = "light";
+            body.style.backgroundColor = "#f4f4f4";
+          }
+          localStorage.setItem("mode", mode);
+        });
+      });
+    </script>
+  </body>
+</html>

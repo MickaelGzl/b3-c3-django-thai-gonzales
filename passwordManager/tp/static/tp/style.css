@@ -1,0 +1,237 @@
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 1em;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+h1,
+h2 {
+  color: #008080;
+  text-align: center;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* a:hover {
+  text-decoration: underline;
+} */
+
+span {
+  color: #008080;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+span,
+small {
+  display: block;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 1em;
+}
+button > a {
+  color: #fff;
+}
+
+button.secondary {
+  background-color: #6c757d;
+}
+
+div.confirmation-modal {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s;
+}
+div.confirmation-modal.isActive {
+  top: 50px;
+}
+
+div.confirmation-modal h4 {
+  margin-bottom: 15px;
+}
+
+div.confirmation-modal button {
+  margin: 0 10px;
+}
+
+/* Form style */
+
+form {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+.leave {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.leave {
+  background-color: #ff0000;
+}
+
+input[type="submit"]:hover,
+.leave:hover {
+  text-decoration: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+form > div > ul {
+  margin: 0;
+}
+
+form > div > ul > li {
+  color: #ff0000;
+  display: block;
+  margin-top: 5px;
+  font-size: 0.8em;
+  padding-bottom: 0;
+}
+
+/* Table style */
+table {
+  width: 50%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.detailsBtns {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30vw;
+}
+
+/* Index list style */
+.element {
+  display: flex;
+  justify-content: space-between;
+}
+.element > button {
+  background-color: #ff0000;
+}
+
+/* switcher */
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  --background: #28096b;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: 0.5s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #fff000;
+  background: var(--background);
+  transition: 0.5s;
+}
+
+input:checked + .slider {
+  background-color: #522ba7;
+}
+
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #fff000;
+}
