@@ -1,0 +1,133 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+h1 {
+  color: #008080; /* Couleur du texte du titre */
+  text-align: center;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+span {
+  font-weight: bold;
+}
+
+span,
+small {
+  display: block;
+  margin-top: 5px;
+}
+
+span.error-message {
+  color: #ff0000; /* Couleur du texte pour les messages d'erreur */
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+}
+button > a {
+  color: #fff;
+}
+
+button.secondary {
+  background-color: #6c757d;
+}
+
+div.confirmation-modal {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s;
+}
+div.confirmation-modal.isActive {
+  top: 50px;
+}
+
+div.confirmation-modal h4 {
+  margin-bottom: 15px;
+}
+
+div.confirmation-modal button {
+  margin: 0 10px;
+}
+
+/* Form style */
+
+form {
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+span.error-message {
+  color: #ff0000; /* Couleur du texte pour les messages d'erreur */
+  display: block;
+  margin-top: 5px;
+}

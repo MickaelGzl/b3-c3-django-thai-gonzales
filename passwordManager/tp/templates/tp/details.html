@@ -1,4 +1,4 @@
-{% if site %}
+{% extends "./base.html" %} {% block content %} {% if site %}
 <h2>{{site.name}}</h2>
 <small>{{site.url}}</small>
 <table border="1">
@@ -19,4 +19,4 @@
 
 {% else %}
 <span> aucun site trouvé pour l'identifiant fournis.</span>
-{% endif %}
+{% endif %} {% endblock %}

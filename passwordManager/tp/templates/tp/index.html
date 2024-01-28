@@ -1,172 +1,63 @@
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Votre Gestionnaire de Mot de Passe</title>
-
-    <!-- Ajoutez vos styles ici -->
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        position: relative;
-      }
-
-      h1 {
-        color: #008080; /* Couleur du texte du titre */
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      li {
-        background-color: #fff;
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-      }
-
-      a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
-      span {
-        font-weight: bold;
-      }
-
-      span,
-      small {
-        display: block;
-        margin-top: 5px;
-      }
-
-      span.error-message {
-        color: #ff0000; /* Couleur du texte pour les messages d'erreur */
-      }
-
-      button {
-        background-color: #007bff;
-        color: #fff;
-        padding: 8px 15px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        margin: 5px;
-      }
-      button > a {
-        color: #fff;
-      }
-
-      button.secondary {
-        background-color: #6c757d;
-      }
-
-      div.confirmation-modal {
-        text-align: center;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        top: -200px;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: all 0.5s;
-      }
-      div.confirmation-modal.isActive {
-        top: 50px;
-      }
-
-      div.confirmation-modal h4 {
-        margin-bottom: 15px;
-      }
-
-      div.confirmation-modal button {
-        margin: 0 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Bienvenue sur votre gestionnaire de mot de passe</h1>
-
-    {% if sites %}
-    <ul>
-      {% for site in sites %}
-      <li>
-        <a href="{% url 'details' site.id%}">
-          <span>{{site.name}} </span>
-          <small>{{site.url}}</small>
-        </a>
-        <button class="delete-button" onclick="openModal('{{site.id}}')">
-          delete
-        </button>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <span>Aucun site enregistré sur votre gestionnaire de mot de passe</span>
-    {% endif %}
-
-    <button>
-      <a href="{% url 'formCreate' %}" class="delete-button"
-        >Créer un nouveau site</a
-      >
+{% extends "./base.html" %} {% block content %} {% if sites %}
+<ul>
+  {% for site in sites %}
+  <li>
+    <a href="{% url 'details' site.id%}">
+      <span>{{site.name}} </span>
+      <small>{{site.url}}</small>
+    </a>
+    <button class="delete-button" onclick="openModal('{{site.id}}')">
+      delete
     </button>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<span>Aucun site enregistré sur votre gestionnaire de mot de passe</span>
+{% endif %}
 
-    <div class="confirmation-modal">
-      <div>
-        <h4>Voulez-vous vraiment supprimer ce site ?!</h4>
-        <div>
-          <button class="confirmation-yes-button" onclick="deleteItem()">
-            Oui
-          </button>
-          <button
-            class="confirmation-no-button secondary"
-            onclick="closeModal()"
-          >
-            Non
-          </button>
-        </div>
-      </div>
+<button>
+  <a href="{% url 'formCreate' %}" class="delete-button"
+    >Créer un nouveau site</a
+  >
+</button>
+
+<div class="confirmation-modal">
+  <div>
+    <h4>Voulez-vous vraiment supprimer ce site ?!</h4>
+    <div>
+      <button class="confirmation-yes-button" onclick="deleteItem()">
+        Oui
+      </button>
+      <button class="confirmation-no-button secondary" onclick="closeModal()">
+        Non
+      </button>
     </div>
-    <script>
-      let idToDelete = null;
-      function openModal(id) {
-        console.log(id);
-        idToDelete = id;
-        document
-          .getElementsByClassName("confirmation-modal")[0]
-          .classList.add("isActive");
-      }
-      function closeModal() {
-        idToDelete = null;
-        document
-          .getElementsByClassName("confirmation-modal")[0]
-          .classList.remove("isActive");
-      }
-      function deleteItem() {
-        const a = document.createElement("a");
-        a.href = `http://localhost:8000/sites/delete/${idToDelete}`;
-        a.click();
-        idToDelete = null;
-        document
-          .getElementsByClassName("confirmation-modal")[0]
-          .classList.remove("isActive");
-      }
-    </script>
-  </body>
-</html>
+  </div>
+</div>
+<script>
+  let idToDelete = null;
+  function openModal(id) {
+    console.log(id);
+    idToDelete = id;
+    document
+      .getElementsByClassName("confirmation-modal")[0]
+      .classList.add("isActive");
+  }
+  function closeModal() {
+    idToDelete = null;
+    document
+      .getElementsByClassName("confirmation-modal")[0]
+      .classList.remove("isActive");
+  }
+  function deleteItem() {
+    const a = document.createElement("a");
+    a.href = `http://localhost:8000/sites/delete/${idToDelete}`;
+    a.click();
+    idToDelete = null;
+    document
+      .getElementsByClassName("confirmation-modal")[0]
+      .classList.remove("isActive");
+  }
+</script>
+{% endblock %}
