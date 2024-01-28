@@ -29,7 +29,7 @@ def siteCreate(req):
 
 def siteDelete(req, site_id):
     # Récupérer l'objet à supprimer
-    site = get_object_or_404(site, pk=site_id)
+    site = get_object_or_404(Site, pk=site_id)
     site.delete()
     return HttpResponseRedirect('/')
     
