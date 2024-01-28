@@ -131,10 +131,12 @@
       <div>
         <h4>Voulez-vous vraiment supprimer ce site ?!</h4>
         <div>
-          <button class="confirmation-yes-button">Oui</button>
+          <button class="confirmation-yes-button" onclick="deleteItem()">
+            Oui
+          </button>
           <button
             class="confirmation-no-button secondary"
-            onclick="closeModal('{{site.id}}')"
+            onclick="closeModal()"
           >
             Non
           </button>
@@ -142,14 +144,25 @@
       </div>
     </div>
     <script>
+      let idToDelete = null;
       function openModal(id) {
         console.log(id);
+        idToDelete = id;
         document
           .getElementsByClassName("confirmation-modal")[0]
           .classList.add("isActive");
       }
-      function closeModal(id) {
-        console.log(id);
+      function closeModal() {
+        idToDelete = null;
+        document
+          .getElementsByClassName("confirmation-modal")[0]
+          .classList.remove("isActive");
+      }
+      function deleteItem() {
+        const a = document.createElement("a");
+        a.href = `http://localhost:8000/sites/delete/${idToDelete}`;
+        a.click();
+        idToDelete = null;
         document
           .getElementsByClassName("confirmation-modal")[0]
           .classList.remove("isActive");
