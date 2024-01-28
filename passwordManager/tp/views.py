@@ -23,3 +23,15 @@ def siteCreate(req):
         form = SiteForm()
     
     return render(req, 'tp/form.html', {'form': form})
+
+def siteUpdate(req, site_id):
+    site = get_object_or_404(Site, pk=site_id)
+    if req.method == 'POST':
+        form = SiteForm(req.POST, instance=site)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = SiteForm(instance=site)
+    
+    return render(req, 'tp/form.html', {'form': form})
